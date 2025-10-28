@@ -1,0 +1,177 @@
+/* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS DE COR --- */
+:root {
+  --cor-fundo: #121214;
+  --cor-container: #202024;
+  --cor-input: #29292e;
+  --cor-borda: #323238;
+  --cor-texto-principal: #E1E1E6;
+  --cor-texto-secundario: #C4C4CC;
+  --cor-placeholder: #7C7C8A;
+  --cor-destaque: #8257E5; /* Roxo Vibrante */
+  --cor-destaque-hover: #996DFF;
+  --cor-sucesso: #00B37E;
+  --cor-excluir: #F75A68;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinha no topo */
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.todo-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--cor-container);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--cor-borda);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: var(--cor-texto-principal);
+}
+
+/* --- SEÇÃO DE INPUT E BOTÃO --- */
+.input-section {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+#input {
+  flex-grow: 1; /* Faz o input ocupar o máximo de espaço */
+  padding: 14px;
+  font-size: 16px;
+  background-color: var(--cor-input);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  color: var(--cor-texto-principal);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#input::placeholder {
+  color: var(--cor-placeholder);
+}
+
+#input:focus {
+  border-color: var(--cor-destaque);
+  box-shadow: 0 0 0 3px rgba(130, 87, 229, 0.3);
+}
+
+#botao {
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: var(--cor-destaque);
+  color: #FFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#botao:hover {
+  background-color: var(--cor-destaque-hover);
+}
+
+#botao:active {
+  transform: scale(0.98); /* Efeito de clique */
+}
+
+/* --- LISTA DE TAREFAS (UL e LI) --- */
+#pai {
+  list-style-type: none;
+}
+
+#pai li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: var(--cor-input);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#pai li span {
+  flex-grow: 1;
+  margin: 0 15px;
+}
+
+/* ESTADO DE TAREFA CONCLUÍDA */
+#pai li.concluida {
+  background-color: transparent;
+  border: 1px dashed var(--cor-borda);
+}
+
+#pai li.concluida span {
+  text-decoration: line-through;
+  color: var(--cor-placeholder);
+}
+
+/* --- BOTÕES DENTRO DA TAREFA (Concluir e Deletar) --- */
+#pai li button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+#pai li button:hover {
+  background-color: var(--cor-borda);
+}
+
+/* Imagem do Check */
+#pai li button img {
+  pointer-events: none; /* Garante que o clique seja no botão */
+}
+
+/* Botão de Excluir */
+#pai li button:last-child {
+  font-size: 20px;
+  color: var(--cor-placeholder);
+  transition: color 0.2s ease;
+}
+
+#pai li button:last-child:hover {
+  color: var(--cor-excluir); /* Muda para vermelho ao passar o mouse */
+}
